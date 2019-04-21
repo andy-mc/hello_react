@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import Hello from './components/hello/Hello';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 import 'tachyons';
 
 ReactDOM.render(
-  <Hello greeting='Hello World :D !!' />, 
+  <Card />, 
   document.getElementById('root')
 );
 
