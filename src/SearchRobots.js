@@ -2,11 +2,11 @@ import React from "react";
 
 const SearchRobots = ({filterRobots}) => {
   return (
-    <div className="tc ma4">
+    <div className="pa2">
       <input
         onChange={filterRobots}
-        type="text" 
-        className="bg-light-gray br4 pa2 w-50"
+        type="search" 
+        className="mt2 mb3 pa3 ba b--green bg-lightest-blue"
         placeholder="Search Robot" 
       />
     </div>
