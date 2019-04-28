@@ -6,18 +6,27 @@ import { robots } from "./robots";
 class App extends Component {
   constructor() { 
     super();
+    this.state = {
+      robotSearchInput: ''
+    }
   }
 
-  filterRobots = () => { 
-    console.log('sad');
+  filterRobots = (event) => { 
+    this.setState({
+      robotSearchInput: event.target.value
+    })
   }
   
-  render() { 
+  render() {
+    const filteredRobots = robots.filter((robot) => { 
+      return robot.name.toLowerCase().includes(this.state.robotSearchInput.toLowerCase())
+    });
+
     return (
-      <div className="bg-green">
+      <div>
         <h1 className="tc pa4">ROBOFRIENDS</h1>
         <SearchRobots filterRobots={this.filterRobots} / >
-        <CardList robots={robots} />
+        <CardList robots={filteredRobots} />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchRobots = ({filterRobots}) => {
   return (
-    <div className="tc bg-green ma4">
+    <div className="tc ma4">
       <input
         onChange={filterRobots}
         type="text" 
