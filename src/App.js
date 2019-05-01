@@ -14,7 +14,9 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.setState({robots})
+    fetch('https://my-json-server.typicode.com/andy-mc/hello_react/get')
+    .then(response => response.json())
+    .then(robotsData => this.setState({robots: robotsData}))
   }
 
   filterRobots = (event) => { 
@@ -28,6 +30,10 @@ class App extends Component {
       return robot.name.toLowerCase().includes(this.state.robotSearchInput.toLowerCase())
     });
 
+    if (this.state.robots.length === 0) { 
+      return <h1>Loading...</h1>
+    }
+    
     return (
       <div className="tc">
         <h1 className="f1 mt5">ROBOFRIENDS</h1>
