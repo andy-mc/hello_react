@@ -8,9 +8,13 @@ class App extends Component {
   constructor() { 
     super();
     this.state = {
-      robots,
+      robots: [],
       robotSearchInput: ''
     }
+  }
+
+  componentWillMount() {
+    this.setState({robots})
   }
 
   filterRobots = (event) => { 
