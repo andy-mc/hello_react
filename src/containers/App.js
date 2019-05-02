@@ -32,7 +32,7 @@ class App extends Component {
       return robot.name.toLowerCase().includes(robotSearchInput.toLowerCase())
     });
 
-    if (robots.length === 0) { 
+    if (!robots.length) { 
       return <h1>Loading...</h1>
     }
     
