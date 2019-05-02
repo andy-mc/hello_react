@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
 import SearchRobots from "../components/SearchRobots";
+import ErrorBoundry from "../components/ErrorBoundry";
 import './App.css';
 
 class App extends Component {
@@ -41,7 +42,9 @@ class App extends Component {
         <h1 className="f1 mt5">ROBOFRIENDS</h1>
         <SearchRobots filterRobots={this.filterRobots} />
         <Scroll>
-          <CardList robots={filteredRobots} />
+          <ErrorBoundry>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundry>
         </Scroll>
       </div>
     );
