@@ -1,22 +1,19 @@
 import React, {Component} from "react";
-import CardList from "./CardList";
-import Scroll from "./Scroll";
-import SearchRobots from "./SearchRobots";
-import { robots } from "./robots";
+import CardList from "../components/CardList";
+import Scroll from "../components/Scroll";
+import SearchRobots from "../components/SearchRobots";
 import './App.css';
 
 class App extends Component {
   constructor() { 
-    console.log('constructor:')
     super();
     this.state = {
-      robots: [],
-      robotSearchInput: ''
+      robotSearchInput: '',
+      robots: []
     }
   }
 
   componentWillMount() {
-    console.log('componentWillMount:')
     fetch('https://my-json-server.typicode.com/andy-mc/hello_react/get')
     .then(response => response.json())
     .then(robotsData => this.setState({robots: robotsData}))
@@ -29,12 +26,13 @@ class App extends Component {
   }
   
   render() {
-    console.log('render:')
-    const filteredRobots = this.state.robots.filter((robot) => { 
-      return robot.name.toLowerCase().includes(this.state.robotSearchInput.toLowerCase())
+    const { robots, robotSearchInput } = this.state;
+
+    const filteredRobots = robots.filter((robot) => { 
+      return robot.name.toLowerCase().includes(robotSearchInput.toLowerCase())
     });
 
-    if (this.state.robots.length === 0) { 
+    if (robots.length === 0) { 
       return <h1>Loading...</h1>
     }
     
