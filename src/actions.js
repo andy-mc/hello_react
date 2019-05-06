@@ -10,10 +10,11 @@ export const setSearchField = (text) => ({
   payload: text
 });
 
-export const requestRobots = (dispatch) => ({
-  dispatch({ type: REQUEST_ROBOTS_PENDING })
-  
-  dispatch({ type: REQUEST_ROBOTS_SUCCES })
-  
-  dispatch({type: REQUEST_ROBOTS_FAILED})
-});
+export const requestRobots = (dispatch) => {
+  dispatch({ type: REQUEST_ROBOTS_PENDING });
+
+  fetch('https://my-json-server.typicode.com/andy-mc/hello_react/get')
+    .then(response => response.json())
+    .then(robotsData => dispatch({ type: REQUEST_ROBOTS_SUCCES, payload: robotsData }))
+    .catch(error => dispatch({type: REQUEST_ROBOTS_FAILED, payload: error }))
+};
